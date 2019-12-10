@@ -1,9 +1,9 @@
-import datetime as dt
 import matplotlib.pyplot as plt
 from matplotlib import style
 import pandas as pd
-import pandas_datareader.data as web
-
+'''
+manipulate data
+'''
 style.use('ggplot')
 
 # visualizing data
@@ -17,7 +17,7 @@ df.dropna(inplace=True)  # drop na(not a number)
 
 # grid - six rows, 1 column, (start row,column)
 ax1 = plt.subplot2grid((6, 1), (0, 0), rowspan=5, colspan=1)
-# sharex --> when zoom, also zoomed
+# sharex --> when x1 is zoomed, x2 is also zoomed
 ax2 = plt.subplot2grid((6, 1), (5, 0), rowspan=1, colspan=1, sharex=ax1)
 
 
