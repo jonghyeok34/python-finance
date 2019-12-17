@@ -28,8 +28,7 @@ def save_sp500_tickers():
 def worker(ticker):
     try:
         start = dt.datetime(2000, 1, 1)
-        end = dt.datetime(2019, 12, 11)    
-        print(1)
+        end = dt.datetime(2019, 12, 11)
         if not os.path.exists(f'stock_dfs/{ticker}.csv'):
             print(ticker)        
             df = web.DataReader(ticker, 'yahoo', start, end)
