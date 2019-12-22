@@ -1,0 +1,6 @@
+pandas
+matplotlib
+mpl_finance
+bs4
+pandas_datareader
+sklearn

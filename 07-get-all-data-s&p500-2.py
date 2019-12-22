@@ -5,7 +5,7 @@ import os
 import pandas as pd
 import pandas_datareader.data as web
 import requests
-from multiprocessing import Pool, freeze_support
+from multiprocessing import Pool, freeze_support, cpu_count
 
 
 def save_sp500_tickers():
@@ -23,7 +23,7 @@ def save_sp500_tickers():
     with open('sp500tickers.pickle', 'wb') as f:
         pickle.dump(tickers, f)
     
-    print(tickers)
+    # print(tickers)
     return tickers
 
 
@@ -47,8 +47,8 @@ def get_data_from_yahoo(reload_sp500=False):
 
     if not os.path.exists('stock_dfs'):
         os.makedirs('stock_dfs')
-    
-    with Pool(8) as pool:
+    cpu = cpu_count()
+    with Pool(cpu-1) as pool:
         pool.map(worker, tickers)
         
     print('the end')
@@ -75,7 +75,7 @@ def compile_data():
             if count % 10 == 0:
                 print(count)
         
-    print(main_df.head())
+    # print(main_df.head())
     main_df.to_csv('sp500_joined_closes.csv')
 
 
